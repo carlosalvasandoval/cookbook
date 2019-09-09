@@ -4,7 +4,7 @@ const path = require('path');
 const {mysql} = require ('./database');
 const app = express();
 //settings
-app.set('port',process.env.PORT || 3000);
+app.set('port',process.env.PORT || 4000);
 //Middlewares
 app.use(morgan('dev'));
 app.use(express.json());

@@ -1,5 +1,5 @@
 import mysql from 'mysql';
-const conn = mysql.createConnection({
+export const conn = mysql.createConnection({
     host: "localhost",
     database: 'cookbook',
     user: "root",
@@ -14,4 +14,4 @@ conn.connect(function (err) {
     console.log('Connected as id ' + conn.threadId);
 });
 
-module.exports = conn;
+//module.exports = conn;
