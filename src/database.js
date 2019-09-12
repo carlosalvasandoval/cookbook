@@ -1,17 +1,11 @@
-import mysql from 'mysql';
-export const conn = mysql.createConnection({
-    host: "localhost",
-    database: 'cookbook',
-    user: "root",
-    password: ""
-});
+import knexBuilder from 'knex';
 
-conn.connect(function (err) {
-    if (err) {
-        console.error('Error connecting: ' + err.stack);
-        return;
+export const knex = knexBuilder({
+    client: 'mysql',
+    connection: {
+        host: "localhost",
+        database: 'cookbook',
+        user: "root",
+        password: ""
     }
-    console.log('Connected as id ' + conn.threadId);
-});
-
-//module.exports = conn;
+  });

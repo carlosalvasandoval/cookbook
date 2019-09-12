@@ -1,10 +1,13 @@
-const express = require('express');
-const morgan = require('morgan');
-const path = require('path');
-const {mysql} = require ('./database');
+import express from 'express';
+import morgan from 'morgan';
+import path from 'path';
+import bunyan from 'bunyan';
 const app = express();
 //settings
-app.set('port',process.env.PORT || 4000);
+app.set('port',process.env.PORT || 3000);
+const log = bunyan.createLogger({name:'System init'});
+log.info('we are running env: '+process.env.ENV);
+
 //Middlewares
 app.use(morgan('dev'));
 app.use(express.json());
@@ -17,5 +20,5 @@ app.use(express.static(path.join(__dirname,'public')))
 
 //Starting the server
 app.listen(app.get('port'),()=>{
-    console.log(`Server on port ${app.get('port')}`);
+    log.info(`Server on port ${app.get('port')}`);
 });
